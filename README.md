@@ -30,14 +30,16 @@ O sistema foi projetado para atender às necessidades dos três principais perfi
 
 Este projeto é construído utilizando tecnologias modernas e robustas para garantir uma experiência de usuário fluida e um sistema seguro e escalável.
 
+* Node.js: **v22.x**
+* NPM: **v10.x**
+* MySQL Server: **8.0**
+
 * **Frontend:**
-    * [React](https://react.dev/) v19
-    * [Tailwind CSS](https://tailwindcss.com/) v4.0
+    * React: **v19**
+    * Tailwind CSS: **v4.0**
 * **Backend:**
-    * [Java](https://www.oracle.com/java/technologies/downloads/) 21
-    * [Spring Boot](https://spring.io/projects/spring-boot) 3.4
-* **Banco de Dados:**
-    * [MySQL](https://www.mysql.com/) 8.4
+    * JDK: **21** (Amazon Corretto)
+    * Spring Boot: **3.5.x**
 
 ## 🔧 Começando
 
