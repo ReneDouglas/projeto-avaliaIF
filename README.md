@@ -34,7 +34,7 @@ Este projeto é construído utilizando tecnologias modernas e robustas para gara
     * [React](https://react.dev/) v19
     * [Tailwind CSS](https://tailwindcss.com/) v4.0
 * **Backend:**
-    * [Java](https://www.oracle.com/java/technologies/downloads/) 25
+    * [Java](https://www.oracle.com/java/technologies/downloads/) 21
     * [Spring Boot](https://spring.io/projects/spring-boot) 3.4
 * **Banco de Dados:**
     * [MySQL](https://www.mysql.com/) 8.4
@@ -48,9 +48,9 @@ Para executar o projeto em seu ambiente de desenvolvimento local, siga os passos
 Certifique-se de que você tem as seguintes ferramentas instaladas em versões compatíveis:
 
 * [Node.js](https://nodejs.org/en/) (v22 ou superior)
-* [JDK 25](https://www.oracle.com/java/technologies/downloads/#jdk25) (ou a LTS mais recente compatível)
+* [JDK 21](https://www.oracle.com/java/technologies/downloads/#jdk25)
 * [Maven](https://maven.apache.org/download.cgi) 3.9+
-* [MySQL Server 8.4](https://dev.mysql.com/downloads/mysql/)
+* [MySQL Server 8.0](https://dev.mysql.com/downloads/mysql/)
 * Um editor de código de sua preferência (ex: [VSCode](https://code.visualstudio.com/), [IntelliJ IDEA](https://www.jetbrains.com/idea/)).
 
 ### Instalação
