@@ -41,7 +41,7 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
  
 ## Como acessar o protótpo do frontend do projeto
 
-Acesse: [AvaliaIF](avaliaif.lovable.app/login)
+Acesse: [AvaliaIF](https://avaliaif.lovable.app/login)
 
 ### Credenciais
 
