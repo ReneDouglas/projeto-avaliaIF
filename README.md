@@ -57,7 +57,7 @@ A **senha** para todos os perfis é `12345`
 - **Perfil:** Setor de Logística
   - email: `logistica@ifpi.edu.br`
 
-# Estrutura do Repositório
+# 📂 Estrutura do Repositório
 
 O projeto segue a estrutura abaixo.
 Para o `backend`, a estrutura de pacotes escolhida é a `feature-based`
