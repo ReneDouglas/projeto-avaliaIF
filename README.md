@@ -281,6 +281,28 @@ docker compose up --build -d
 ```
 Este comando irá recriar as imagens, baixando as novas dependências, e iniciar os containers atualizados.
 
+### Como debugar a aplicação Spring no VSCode (avaliaif-backend)
+
+1. Crie um arquivo `.vscode` na raíz do projeto caso ele ainda não exista.
+2. Crie um arquivo `launch.json` e cole o código abaixo.
+3. No VSCode, vá para a aba `Run and Debug`, selecione `Attach to Docker Container` no menu dropdown e clique no botão de play verde (Start Debugging).
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Attach to Docker Container",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "projectName": "avaliaif-backend" // IMPORTANTE: Verifique se este é o nome do seu projeto no pom.xml
+    }
+  ]
+}
+```
+
 # 💻 Guia de Desenvolvimento
 
 Para manter o projeto organizado, seguiremos um fluxo de trabalho padrão com Git.
