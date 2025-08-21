@@ -38,6 +38,32 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
 - Acesso a uma lista de provas aprovadas e prontas para impressão.
 - Download dos arquivos para impressão.
 - Marcação das provas como "impressas" para controle.
+
+## Principais entidades do sistema
+
+- **Servidor:** Professor, Coordenador, Setor Pedagógico e Setor de Logística
+- **Disciplina: ** Técnica ou Propedêutica
+- **Turma**
+- **Período de Avaliação**
+- **Professor-Disciplina-Turma** (relação)
+- **Minuta**
+- **Avaliação/Histórico de Indeferimentos**
+
+### Enums
+
+- **Status das minutas:**
+  - Não Enviada
+  - Revisão Coordenação
+  - Revisão Pedagogia
+  - Devolvida
+  - Finalizada
+  - Impressa
+
+- **Eixos Técnicos**
+  - Administração
+  - Agropecuária
+  - Informática
+  - Meio Ambiente
  
 ## Como acessar o protótpo do projeto
 
