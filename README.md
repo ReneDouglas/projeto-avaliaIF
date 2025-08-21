@@ -42,7 +42,7 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
 ## Principais entidades do sistema
 
 - **Servidor:** Professor, Coordenador, Setor Pedagógico e Setor de Logística
-- **Disciplina: ** Técnica ou Propedêutica
+- **Disciplina:** Técnica ou Propedêutica
 - **Turma**
 - **Período de Avaliação**
 - **Professor-Disciplina-Turma** (relação)
