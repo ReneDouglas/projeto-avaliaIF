@@ -57,6 +57,71 @@ A **senha** para todos os perfis é `12345`
 - **Perfil:** Setor de Logística
   - email: `logistica@ifpi.edu.br`
 
+# Estrutura do Repositório
+
+O projeto segue a estrutura abaixo.
+Para o `backend`, a estrutura de pacotes escolhida é a `feature-based`
+
+```plainText
+/avalia-if
+├── 📁 backend/
+│   ├── 📄 Dockerfile                                  #   <--   Script docker para execução de comandos específicos no container
+│   ├── 📄 pom.xml
+│   └── 📁 src/
+│       ├── 📁 main/
+│       │   ├── 📁 java/br/edu/ifpi/avaliaif/
+│       │   │   ├── 📁 feature_a/                      #   <--   Módulo/Feature
+│       │   │   │   ├── 📄 FeatureAController.java
+│       │   │   │   ├── 📄 IFeatureAService.java       #   <--   Interface para comunicação entre módulos
+│       │   │   │   ├── 📄 FeatureAServiceImpl.java    #   <--   Implementação da interface
+│       │   │   │   ├── 📄 FeatureARepository.java
+│       │   │   │   ├── 📄 FeatureAEntity.java
+│       │   │   │   └── 📁 dto/
+│       │   │   ├── 📁 feature_b/                      #   <--   Módulo/Feature
+│       │   │   │   ├── 📄 FeatureBController.java
+│       │   │   │   ├── 📄 IFeatureBService.java       #   <--   Interface
+│       │   │   │   ├── 📄 FeatureBServiceImpl.java    #   <--   Implementação da interface 
+│       │   │   │   ├── 📄 FeatureBRepository.java
+│       │   │   │   └── 📄 FeatureBEntity.java
+│       │   │   │   └── 📁 dto/
+│       │   │   ├── 📁 config/                         #   <--   Configurações globais
+│       │   │   │   └── 📁 security/
+│       │   │   └── 📁 shared/                         #   <--   Recursos compartilhados
+│       │   │   │   ├── 📁 exception/
+│       │   │   │   └── 📁 util/
+│       │   └── 📁 resources/                          #   <--   Arquivos de configuração do Spring
+│       │       ├── 📄 application.properties
+│       │       ├── 📄 application-docker.properties
+│       │       ├── 📄 application-dev.properties
+│       └── 📁 test/                                   #   <--   Diretório de testes
+│           └── 📁 java/br/edu/ifpi/avaliaif/
+│               ├── 📁 feature_a/
+│               └── 📁 feature_b/
+│
+├── 📁 frontend/
+│   ├── 📄 .env.example
+│   ├── 📄 Dockerfile
+│   ├── 📄 package.json
+│   ├── 📄 framework.config.js (ex: vite.config.js)
+│   ├── 📁 public/
+│   └── 📁 src/
+│       ├── 📁 api/
+│       ├── 📁 assets/
+│       ├── 📁 components/
+│       ├── 📁 context_or_store/
+│       ├── 📁 hooks/
+│       ├── 📁 pages/
+│       ├── 📄 App.jsx
+│       └── 📄 main.jsx
+│
+├── 📁 docs/
+│
+├── 📄 .vscode
+├── 📄 .gitignore
+├── 📄 docker-compose.yml
+└── 📄 README.md
+```
+
 # 🚀 Tecnologias Utilizadas
 
 Para garantir que todos trabalhem com as mesmas ferramentas, listamos abaixo as tecnologias e suas versões. Siga os passos para instalar cada uma.
@@ -201,12 +266,12 @@ Nunca trabalhe diretamente nas branches `main` ou `development`. Para cada nova 
   - {`descrição-curta`}: Duas ou três palavras que resumem a tarefa (ex: `cria-tela-login`).
 - **Comandos**
   ```bash
-  # 1. Mude para a branch 'develop' e garanta que ela esteja atualizada
-  git checkout develop
-  git pull origin develop
+  # 1. Mude para a branch 'development' e garanta que ela esteja atualizada
+  git switch development
+  git pull origin development
 
   # 2. Crie sua nova branch e mude para ela
-  git checkout -b feature/task-12-cria-tela-login
+  git switch -c feature/task-12-cria-tela-login
   ```
 ## Boas Práticas de Commits
 Commits são "checkpoints" do seu trabalho. Mensagens claras ajudam a entender o histórico do projeto. Usaremos o padrão **Conventional Commits**.
