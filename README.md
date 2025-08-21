@@ -89,8 +89,8 @@ O projeto segue a estrutura abaixo.
 Para o `backend`, a estrutura de pacotes escolhida é a `feature-based`
 
 ```plainText
-/avalia-if
-├── 📁 backend/
+/apps
+├── 📁 avaliaif-backend/
 │   ├── 📄 Dockerfile                                  #   <--   Script docker para execução de comandos específicos no container
 │   ├── 📄 pom.xml
 │   └── 📁 src/
@@ -124,7 +124,7 @@ Para o `backend`, a estrutura de pacotes escolhida é a `feature-based`
 │               ├── 📁 feature_a/
 │               └── 📁 feature_b/
 │
-├── 📁 frontend/
+├── 📁 avaliaif-frontend/
 │   ├── 📄 .env.example
 │   ├── 📄 Dockerfile
 │   ├── 📄 package.json
