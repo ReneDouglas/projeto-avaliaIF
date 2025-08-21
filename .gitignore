@@ -1,0 +1,5 @@
+### macOS ###
+# Arquivos de metadados do Finder e do sistema de arquivos
+.DS_Store
+.AppleDouble
+.LSOverride
