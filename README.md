@@ -177,6 +177,7 @@ java -version  # Deve exibir a versão 21.x.x
 ## MySQL
 
 - MySQL Server `v8.0`
+
 **Não é necessário instalar o MySQL localmente**, pois ele será executado através do Docker.
 
 ## Docker
