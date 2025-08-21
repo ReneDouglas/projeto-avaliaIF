@@ -69,7 +69,7 @@ java -version  # Deve exibir a versão 21.x.x
 O Docker nos ajudará a criar um ambiente padronizado para rodar a aplicação (backend e banco de dados).
 
 ### Instalação
-Acesse o site oficial do [Docker](https://docs.docker.com/get-started/get-docker) e baixe o** Docker Desktop** para o seu sistema operacional (Windows, macOS ou Linux). O instalador é simples e intuitivo.
+Acesse o site oficial do [Docker](https://docs.docker.com/get-started/get-docker) e baixe o **Docker Desktop** para o seu sistema operacional (Windows, macOS ou Linux). O instalador é simples e intuitivo.
 
 ### Verificar a instalação
 ```bash
@@ -108,15 +108,21 @@ Certifique-se de que o Docker Desktop esteja em execução na sua máquina.
 ## Suba os containers
 Na raiz do projeto (onde o arquivo `docker-compose.yml` está localizado), execute:
 ```bash
-docker-compose up --build -d
+docker compose up --build -d
 ```
 - `up`: Cria e inicia os containers.
 - `--build`: Força a reconstrução das imagens. Use isso na primeira vez ou quando houver alterações nos arquivos de configuração (`Dockerfile`, `package.json`, etc.).
 - `-d`: (detached) Executa os containers em segundo plano.
 
+Para subir os containers sem a necessidade de realizar o `build` , utilize o comando abaixo ou execute-os via Docker Desktop.
+```bash
+docker compose up -d
+```
+
 ## Acesse os serviços
 - Frontend (React com Hot Reload): http://localhost:3000
 - Backend (Java/Spring): http://localhost:8080
+
 O Hot Reload está configurado para o frontend. Qualquer alteração que você fizer nos arquivos do React será refletida automaticamente no navegador.
 
 ## O que fazer se uma dependência for atualizada ou adicionada?
@@ -124,12 +130,12 @@ Se você adicionar uma nova biblioteca no `package.json` (frontend) ou no `pom.x
 
 ### 1. Pare os containers atuais
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### 2. Reconstrua e suba os containers novamente
 ```bash
-docker-compose up --build -d
+docker compose up --build -d
 ```
 Este comando irá recriar as imagens, baixando as novas dependências, e iniciar os containers atualizados.
 
@@ -182,7 +188,8 @@ git push origin feature/task-12-cria-tela-login
 
 ## Criar Pull Request
 
-O que é um Pull Request e como solicitá-lo? 
+O que é um Pull Request e como solicitá-lo?
+
 Um Pull Request (PR) é um pedido formal para que seu código (da sua branch) seja revisado e incorporado (`merged`) à branch `development`. É uma oportunidade para que outros colegas revisem seu trabalho antes que ele entre na base principal do código.
 
 ### Como solicitar no GitHub
