@@ -41,9 +41,11 @@ services:
       - "5005:5005" # Porta de debug
     volumes:
       - maven-repo:/root/.m2
+      - uploaded-files:/app/uploads
     depends_on:
       mysql:
         condition: service_healthy
 volumes:
   mysql-data:
   maven-repo:
+  uploaded-files:
