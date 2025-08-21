@@ -12,7 +12,7 @@
 	<artifactId>avaliaif-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>avaliaif-backend</name>
-	<description>Demo project for Spring Boot</description>
+	<description>AvaliaIF project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>

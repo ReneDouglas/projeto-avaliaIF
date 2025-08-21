@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-database
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: avaliaif
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -proot"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  avaliaif-frontend:
+    build:
+      context: ./apps/avaliaif-frontend
+      dockerfile: Dockerfile
+    container_name: avaliaif-frontend
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./apps/avaliaif-frontend:/app
+      - /app/node_modules
+  avaliaif-backend:
+    build:
+      context: ./apps/avaliaif-backend
+      dockerfile: Dockerfile
+    container_name: avaliaif-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/avaliaif
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+      - "5005:5005" # Porta de debug
+    volumes:
+      - maven-repo:/root/.m2
+    depends_on:
+      mysql:
+        condition: service_healthy
+volumes:
+  mysql-data:
+  maven-repo:
