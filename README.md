@@ -39,7 +39,7 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
 - Download dos arquivos para impressão.
 - Marcação das provas como "impressas" para controle.
  
-## Como acessar o protótpo do frontend do projeto
+## Como acessar o protótpo do projeto
 
 Acesse: [AvaliaIF](https://avaliaif.lovable.app/login)
 
