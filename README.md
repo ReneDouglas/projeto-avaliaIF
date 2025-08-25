@@ -59,13 +59,14 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
   - Finalizada
   - Impressa
 
-- **Eixos Técnicos**
-  - Administração
-  - Agropecuária
-  - Informática
-  - Meio Ambiente
+- **Eixos**
+  - Administração (Técnico)
+  - Agropecuária (Técnico)
+  - Informática (Técnico)
+  - Meio Ambiente (Técnico)
+  - Propedêutica (Base Comum)
  
-## Como acessar o protótpo do projeto
+## Como acessar o protótipo do projeto
 
 Acesse: [AvaliaIF](https://avaliaif.lovable.app/login)
 
@@ -309,7 +310,7 @@ Commits são "checkpoints" do seu trabalho. Mensagens claras ajudam a entender o
   - `fix`: Para uma correção de bug.
   - `docs`: Para alterações na documentação (README.md, etc.).
   - `style`: Para formatação de código, ponto e vírgula, etc. (sem alteração de lógica).
-  - `refactor`: Para refatoração de código que não altera a funcionalidade.
+  - `refact`: Para refatoração de código que não altera a funcionalidade.
   - `chore`: Para tarefas de manutenção, como atualização de dependências.
 
 ### Exemplo de um bom commit
