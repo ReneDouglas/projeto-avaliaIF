@@ -38,7 +38,6 @@ services:
       SPRING_DATASOURCE_PASSWORD: root
     ports:
       - "8080:8080"
-      - "5005:5005" # Porta de debug
     volumes:
       - maven-repo:/root/.m2
       - uploaded-files:/app/uploads
