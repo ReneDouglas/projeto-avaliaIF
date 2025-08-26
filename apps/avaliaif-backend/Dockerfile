@@ -3,11 +3,11 @@ FROM maven:3.9-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
-COPY apps/avaliaif-backend/pom.xml .
+COPY pom.xml .
 
-RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
+#RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
-COPY apps/avaliaif-backend/src ./src
+COPY src ./src
 
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -DskipTests
 
