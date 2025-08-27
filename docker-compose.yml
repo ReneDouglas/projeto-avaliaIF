@@ -43,7 +43,7 @@ services:
       - maven-repo:/root/.m2
       - uploaded-files:/app/uploads
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
 volumes:
   pgdata:
