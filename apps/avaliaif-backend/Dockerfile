@@ -9,7 +9,7 @@ COPY pom.xml .
 
 COPY src ./src
 
-RUN --mount=type=cache,id=m2-cache,target=/root/.m2 mvn clean package -DskipTests
+RUN --mount=type=cache,target=/root/.m2,id=m2-maven-cache mvn clean package -DskipTests
 
 
 # ---- ESTÁGIO 2: Runtime Otimizado ----
