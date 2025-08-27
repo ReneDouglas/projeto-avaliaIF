@@ -1,17 +1,18 @@
 services:
-  mysql:
-    image: mysql:8
-    container_name: mysql-database
+  postgres:
+    image: postgres:16
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: avaliaif
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: avaliaif
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - pgdata:/var/lib/postgresql/data
+      # - ./scripts/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -proot"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -33,12 +34,11 @@ services:
       dockerfile: Dockerfile
     container_name: avaliaif-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/avaliaif
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/avaliaif
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
     ports:
       - "8080:8080"
-      - "5005:5005" # Porta de debug
     volumes:
       - maven-repo:/root/.m2
       - uploaded-files:/app/uploads
@@ -46,6 +46,6 @@ services:
       mysql:
         condition: service_healthy
 volumes:
-  mysql-data:
+  pgdata:
   maven-repo:
   uploaded-files:

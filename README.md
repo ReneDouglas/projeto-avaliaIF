@@ -201,11 +201,20 @@ Baixe o OpenJDK 21 (por exemplo, o [Eclipse Temurin](https://adoptium.net/pt-BR)
 java -version  # Deve exibir a versão 21.x.x
 ```
 
-## MySQL
+## PostgreSQL
 
-- MySQL Server `v8.0`
+- PostgreSQL `v16.0`
 
-**Não é necessário instalar o MySQL localmente**, pois ele será executado através do Docker.
+**Não é necessário instalar o Postgres localmente**, pois ele será executado através do Docker.
+
+### Como se conectar ao container do Postgres no DBeaver
+1. Inicia o container do Postgres no Docker Desktop
+2. Abra o Dbeaver e crie uma nova conexão `PostgreSQL` com as seguintes configurações:
+   - **URL:** jdbc:postgresql://localhost:5432/avaliaif
+   - **Host:** localhost
+   - **Banco de Dados:** avaliaif
+   - **Nome de usuário:** postgres
+   - **Senha:** postgres
 
 ## Docker
 
