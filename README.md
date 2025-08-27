@@ -208,8 +208,8 @@ java -version  # Deve exibir a versão 21.x.x
 **Não é necessário instalar o Postgres localmente**, pois ele será executado através do Docker.
 
 ### Como se conectar ao container do Postgres no DBeaver
-1. Inicia o container do Postgres no Docker Desktop
-2. Abra o Dbeaver e crie uma nova conexão `PostgreSQL` com as seguintes configurações:
+1. Inicie o container do Postgres no Docker Desktop
+2. Abra o DBeaver e crie uma nova conexão `PostgreSQL` com as seguintes configurações:
    - **URL:** jdbc:postgresql://localhost:5432/avaliaif
    - **Host:** localhost
    - **Banco de Dados:** avaliaif
