@@ -1,21 +1,37 @@
+# Multi-stage build para otimizar o tamanho da imagem final
 
-FROM node:22-alpine AS base
+# Estágio 1: Build da aplicação
+FROM node:22-alpine AS builder
+
+# Definir diretório de trabalho
 WORKDIR /app
 
-FROM base AS deps
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+# Copiar arquivos de dependências
+COPY package*.json ./
 
-FROM base AS builder
-COPY package.json package-lock.json ./
-RUN npm ci
+# Instalar dependências (incluindo devDependencies para o build)
+RUN npm ci --only=production=false
+
+# Copiar código fonte
+COPY . .
+
+# Build da aplicação para produção
 RUN npm run build
 
-FROM node:22-alpine AS runner
+# Estágio 2: Servidor de produção
+FROM node:22-alpine AS production
+
+# Instalar serve globalmente para servir arquivos estáticos
+RUN npm install -g serve
+
+# Definir diretório de trabalho
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=deps /app/node_modules ./node_modules
-COPY package.json .
-COPY dist ./dist
-EXPOSE 8080
-CMD ["node", "dist/main.js"]
+
+# Copiar apenas os arquivos buildados do estágio anterior
+COPY --from=builder /app/dist ./dist
+
+# Expor porta (Railway usa a variável PORT)
+EXPOSE $PORT
+
+# Comando para iniciar o servidor usando a porta do Railway
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000}"]
