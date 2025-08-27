@@ -7,9 +7,11 @@ COPY pom.xml .
 
 #RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
+RUN mvn dependency:go-offline
+
 COPY src ./src
 
-RUN --mount=type=cache,target=/root/.m2,id=m2-maven-cache mvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 
 # ---- ESTÁGIO 2: Runtime Otimizado ----
