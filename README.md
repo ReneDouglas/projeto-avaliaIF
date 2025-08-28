@@ -39,6 +39,25 @@ O sistema foi projetado para atender às necessidades dos quatro principais perf
 - Download dos arquivos para impressão.
 - Marcação das provas como "impressas" para controle.
 
+### Fluxo de Aprovação de Minutas
+
+```mermaid
+flowchart LR
+
+    A["👨‍🏫 Professor<br/>Envia/Reenvia minuta"] --> B["🏫 Coordenação de Curso<br/>Emite parecer"]
+
+    B -->|✅ Deferido| C["📚 Setor Pedagógico<br/>Emite parecer"]
+    B -->|❌ Indeferido| A
+
+    C -->|✅ Deferido| D["📦 Setor de Logística<br/>Realiza impressão"]
+    C -->|❌ Indeferido| A
+```
+
+👉 Esse fluxograma já contempla:  
+- O retorno ao **Professor** em caso de indeferimento;  
+- O fato de que o **Setor Pedagógico só atua após o parecer da Coordenação**;  
+- O envio para **impressão** apenas após deferimentos consecutivos. 
+
 ## Principais entidades do sistema
 
 - **Servidor:** Professor, Coordenador, Setor Pedagógico e Setor de Logística
