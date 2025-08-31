@@ -155,18 +155,18 @@ escolhida é a `feature-based`
 │               └── 📁 feature_b/
 │
 ├── 📁 avaliaif-frontend/
-│   ├── 📄 .env.example
+│   ├── 📄 .env
 │   ├── 📄 Dockerfile
 │   ├── 📄 package.json
-│   ├── 📄 framework.config.js (ex: vite.config.js)
+│   ├── 📄 vite.config.js
 │   ├── 📁 public/
 │   └── 📁 src/
-│       ├── 📁 api/
-│       ├── 📁 assets/
-│       ├── 📁 components/
-│       ├── 📁 context_or_store/
-│       ├── 📁 hooks/
-│       ├── 📁 pages/
+│       ├── 📁 api/               # <- Diretório responsável por toda a comunicação com o backend
+│       ├── 📁 assets/            # <- Armazenamento de arquivos estáticos (imgs, fonts, icons, etc)
+│       ├── 📁 components/        # <- Componentes React reutilizáveis (Button.tsx, Input.tsx, etc)
+│       ├── 📁 context_or_store/  # <- Gerenciamento de estado (AuthContext.tsx, ThemeContext.tsx, etc)
+│       ├── 📁 hooks/             # <- Diretório para custom hooks (reutilização de lógica)
+│       ├── 📁 pages/             # <- Diretório que contém as páginas da aplicação
 │       ├── 📄 App.jsx
 │       └── 📄 main.jsx
 │
