@@ -2,17 +2,18 @@ services:
   postgres:
     image: postgres:16
     restart: unless-stopped
+    container_name: postgres-database
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: avaliaif
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
       # - ./scripts/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -24,11 +25,13 @@ services:
     environment:
       - NODE_ENV=development
     ports:
-      - "5173:5173"
+      - '5173:5173'
     volumes:
       - ./apps/avaliaif-frontend:/app
       - /app/node_modules
   avaliaif-backend:
+    # working_dir: /app
+    # image: bellsoft/liberica-runtime-container:jre-21-crac-slim-glibc
     build:
       context: ./apps/avaliaif-backend
       dockerfile: Dockerfile
@@ -37,15 +40,20 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/avaliaif
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_PROFILES_ACTIVE: docker
+      JAVA_TOOL_OPTIONS:
+        '-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=*:5005'
     ports:
-      - "8080:8080"
+      - '8080:8080'
+      - '5005:5005'
     volumes:
-      - maven-repo:/root/.m2
+      # - ./apps/avaliaif-backend/target/avaliaif-backend-0.0.1-SNAPSHOT.jar:/app/avaliaif-api.jar
       - uploaded-files:/app/uploads
+    # entrypoint: ['java', '-jar', '/app/avaliaif-api.jar']
     depends_on:
       postgres:
         condition: service_healthy
+
 volumes:
   pgdata:
-  maven-repo:
   uploaded-files:
