@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn clean package -DskipTests
 
 
 # ---- ESTÁGIO 2: Runtime ----
-FROM bellsoft/liberica-runtime-container:jre-21-crac-slim-glibc
+FROM bellsoft/liberica-runtime-container:jre-21-crac-cds-slim-musl
 WORKDIR /app
 
 ENV SPRING_PROFILES_ACTIVE=docker
