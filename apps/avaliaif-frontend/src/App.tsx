@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Box, Container, CssBaseline, Typography } from '@mui/material';
+import { Heading } from './components/Heading';
+import { green } from '@mui/material/colors';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export function App() {
   return (
+    // CssBaseline normaliza os estilos do navegador, uma boa prática com MUI.
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <CssBaseline />
+      {/* Box é um componente genérico para layout, similar a uma <div>. */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+          bgcolor: green[100], // Cores do sistema de design do MUI.
+        }}
+      >
+        <Heading>AvaliaIF</Heading>
 
-export default App
+        {/* Container centraliza o conteúdo e define uma largura máxima. */}
+        <Container
+          component='main'
+          sx={{
+            flexGrow: 1, // Faz o container ocupar o espaço restante.
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            py: 4, // Padding vertical.
+          }}
+        >
+          <Typography
+            variant='h2'
+            component='h2'
+            fontWeight='fontWeightBold'
+            color='primary' // Cor de texto principal do tema.
+          >
+            Bem-vindo!
+          </Typography>
+          <Typography
+            variant='h5'
+            color='secondary' // Cor de texto secundária.
+            sx={{ mt: 2 }} // Margem no topo, 'mt: 2' é 16px por padrão.
+          >
+            Este é o corpo principal do AvaliaIF
+          </Typography>
+        </Container>
+      </Box>
+    </>
+  );
+}
