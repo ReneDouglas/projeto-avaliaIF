@@ -99,6 +99,7 @@
 					<consoleOutput>true</consoleOutput>
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
+					<outputFile>${project.build.directory}/checkstyle/checkstyle-report.xml</outputFile>
 				</configuration>
 				<executions>
 					<execution>

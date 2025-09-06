@@ -45,12 +45,15 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+          cache: 'maven'
 
       - name: Validação com Checkstyle
-        uses: nikitasavinov/checkstyle-action@master
+        run: mvn checkstyle:check
+      - name: Gerar Relatório Checkstyle
+        run: mvn checkstyle:checkstyle
+      - name: Upload Relatório Checkstyle
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: 'github-pr-check'
-          tool_name: 'Checkstyle'
-          checkstyle_config: 'google_checks.xml'
-          workdir: 'apps/avaliaif-backend'
+          name: checkstyle-report
+          path: target/checkstyle/*
+          retention-days: 15
