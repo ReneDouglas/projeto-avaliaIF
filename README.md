@@ -14,7 +14,7 @@ garantindo um processo mais ágil, transparente e eficiente.
 
 # 🎨 Design e Identidade Visual
 
-### A identidade visual e o logo do **AvaliaIF** foram desenvolvidos pelo colaborador [[Rafhael Hanry](https://github.com/MrRafha)]
+### A identidade visual e o logo do **AvaliaIF** foram desenvolvidos pelo colaborador [Rafhael Hanry](https://github.com/MrRafha)
 
 |                                     Fundo Claro                                     |                                       Fundo Escuro                                       |
 | :---------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
