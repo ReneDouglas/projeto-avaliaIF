@@ -12,6 +12,14 @@ então avaliadas pelos coordenadores pedagógicos. Uma vez aprovadas, as minutas
 são automaticamente encaminhadas ao setor de logística para impressão,
 garantindo um processo mais ágil, transparente e eficiente.
 
+# 🎨 Design e Identidade Visual
+
+### A identidade visual e o logo do **AvaliaIF** foram desenvolvidos pelo colaborador [[Rafhael Hanry](https://github.com/MrRafha)]
+
+|                                     Fundo Claro                                     |                                       Fundo Escuro                                       |
+| :---------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
+| <img src="docs/brand/AvaliaIF.png" alt="Logo AvaliaIF com fundo claro" width="300"> | <img src="docs/brand/AvaliaIFdark.png" alt="Logo AvaliaIF com fundo escuro" width="300"> |
+
 ## ✨ Funcionalidades Principais
 
 O sistema foi projetado para atender às necessidades dos quatro principais
