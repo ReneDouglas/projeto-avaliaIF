@@ -5,7 +5,7 @@ services:
     container_name: postgres-database
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: minhasenha
       POSTGRES_DB: avaliaif
     ports:
       - '5432:5432'
