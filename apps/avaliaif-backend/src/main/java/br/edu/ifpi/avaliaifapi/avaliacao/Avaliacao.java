@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /**
  * Classe que representa uma avaliação.
@@ -18,6 +19,7 @@ import jakarta.persistence.Id;
  */
 
  @Entity
+ @Table(name = "avaliacoes")
 public class Avaliacao {
 
     @Id
@@ -32,18 +34,14 @@ public class Avaliacao {
     // private Usuario requerente_id;
     // private Disciplina disciplina_id;
 
-    @CreatedBy
-    private LocalDateTime criado_em;
+    private LocalDateTime criadoEm;
+    private String criadoPor;
 
-    private String criado_por;
-
-    @LastModifiedDate
-    private LocalDateTime atualizado_em;
-    
-    private String atualizado_por;
+    private LocalDateTime atualizadoEm;
+    private String atualizadoPor;
 
 
-    Avaliacao() {
+    public Avaliacao() {
     }
 
     public Long getId() {
@@ -55,29 +53,29 @@ public class Avaliacao {
     public void setPublicId(String publicId) {
         this.publicId = publicId;
     }
-    public LocalDateTime getCriado_em() {
-        return criado_em;
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
     }
-    public void setCriado_em(LocalDateTime criado_em) {
-        this.criado_em = criado_em;
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
     }
-    public String getCriado_por() {
-        return criado_por;
+    public String getCriadoPor() {
+        return criadoPor;
     }
-    public void setCriado_por(String criado_por) {
-        this.criado_por = criado_por;
-    }  
-    public LocalDateTime getAtualizado_em() {
-        return atualizado_em;
+    public void setCriadoPor(String criadoPor) {
+        this.criadoPor = criadoPor;
     }
-    public void setAtualizado_em(LocalDateTime atualizado_em) {
-        this.atualizado_em = atualizado_em;
+    public LocalDateTime getAtualizadoEm() {
+        return atualizadoEm;
     }
-    public String getAtualizado_por() {
-        return atualizado_por;
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+        this.atualizadoEm = atualizadoEm;
     }
-    public void setAtualizado_por(String atualizado_por) {
-        this.atualizado_por = atualizado_por;
+    public String getAtualizadoPor() {
+        return atualizadoPor;
+    }
+    public void setAtualizadoPor(String atualizadoPor) {
+        this.atualizadoPor = atualizadoPor;
     }
 
 }
