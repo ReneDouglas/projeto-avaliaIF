@@ -11,25 +11,9 @@ import {
   Alert,
   useTheme,
   useMediaQuery,
+  CircularProgress,
 } from '@mui/material';
-
-// Cores
-const avaliaIFColors = {
-  primary: '#1B5E20', // Verde principal do AvaliaIF
-  primaryLight: '#4CAF50', // Verde claro
-  primaryDark: '#0D3F0F', // Verde escuro
-  secondary: '#2E7D32', // Verde secundário
-  accent: '#81C784', // Verde claro para destaques
-  background: '#F1F8E9', // Fundo verde muito claro
-  surface: '#FFFFFF', // Branco para cards
-  onPrimary: '#FFFFFF', // Texto sobre cor primária
-  onSurface: '#1B5E20', // Texto sobre superfície
-  text: {
-    primary: '#1B5E20',
-    secondary: '#2E7D32',
-    disabled: '#81C784',
-  },
-};
+import { avaliaIFColors, commonStyles } from '../theme';
 
 export function Login() {
   const theme = useTheme();
@@ -39,7 +23,7 @@ export function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  // Estados do formulário
+  // Estados do formulário - apenas para erros agora
   const [formData] = useState({
     email: '',
     password: '',
@@ -91,26 +75,17 @@ export function Login() {
       // Simular requisição de login
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Simular validação de credenciais
-      // CREDENCIAIS DE TESTE PARA ANÁLISE:
-      // professor@ifpi.edu.br | senha: 12345
-      // pedagogico@ifpi.edu.br | senha: 12345
-      // coordenador@ifpi.edu.br | senha: 12345
-      // logistica@ifpi.edu.br | senha: 12345
-      const validCredentials = [
-        { email: 'professor@ifpi.edu.br', password: '12345' },
-        { email: 'pedagogico@ifpi.edu.br', password: '12345' },
-        { email: 'coordenador@ifpi.edu.br', password: '12345' },
-        { email: 'logistica@ifpi.edu.br', password: '12345' },
-      ];
+      // TODO: Integrar com API de autenticação real
+      // Por enquanto, simulando validação para desenvolvimento
+      // NOTA: Esta lógica será substituída pela integração com o backend
 
-      const isValid = validCredentials.some(
-        (cred) => cred.email === email && cred.password === password,
-      );
+      // Simulação temporária - remover quando a API estiver pronta
+      const isDevelopmentLogin =
+        email.includes('@ifpi.edu.br') && password.length >= 4;
 
-      if (isValid) {
+      if (isDevelopmentLogin) {
         alert('Login realizado com sucesso!');
-        // Aqui seria o redirecionamento para o dashboard
+        // TODO: Implementar redirecionamento para dashboard após integração com backend
       } else {
         setLoginError('E-mail ou senha incorretos');
       }
@@ -125,7 +100,7 @@ export function Login() {
   const InstitutionalSection = () => (
     <Box
       sx={{
-        background: `linear-gradient(135deg, ${avaliaIFColors.background} 0%, ${avaliaIFColors.accent}20 100%)`,
+        ...commonStyles.institutionalSection,
         p: 4,
         display: 'flex',
         flexDirection: 'column',
@@ -133,18 +108,6 @@ export function Login() {
         alignItems: 'center',
         textAlign: 'center',
         minHeight: isMobile ? 'auto' : '100vh',
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background:
-            'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23{avaliaIFColors.primary.slice(1)}" fill-opacity="0.03"%3E%3Cpath d="M20 20c0 11.046-8.954 20-20 20v-40c11.046 0 20 8.954 20 20z"/%3E%3C/g%3E%3C/svg%3E")',
-          opacity: 0.1,
-        },
       }}
     >
       {/* Logos AvaliaIF e IFPI */}
@@ -180,7 +143,7 @@ export function Login() {
           src='/src/assets/brand/Logo-IFPI-Horizontal.png'
           alt='IFPI Logo'
           sx={{
-            width: isMobile ? 120 : 240, //MOBILE : PC
+            width: isMobile ? 120 : 240,
             height: 'auto',
             filter: 'drop-shadow(0 2px 8px rgba(27, 94, 32, 0.1))',
           }}
@@ -246,7 +209,7 @@ export function Login() {
             fontSize: isMobile ? '0.7rem' : '0.75rem',
             lineHeight: 1.3,
             fontWeight: 400,
-            mt: '60px',
+            mt: '50px',
           }}
         >
           Desenvolvido pelo curso de Análise e desenvolvimento de sistemas do
@@ -275,9 +238,7 @@ export function Login() {
           maxWidth: 420,
           mx: 'auto',
           width: '100%',
-          borderRadius: 3,
-          border: `1px solid ${avaliaIFColors.accent}40`,
-          boxShadow: `0 8px 32px rgba(27, 94, 32, 0.12)`,
+          ...commonStyles.card,
         }}
       >
         <CardContent sx={{ p: 4 }}>
@@ -329,21 +290,7 @@ export function Login() {
               error={!!emailError}
               helperText={emailError}
               placeholder='usuario@ifpi.edu.br'
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2,
-                  '&:hover fieldset': {
-                    borderColor: avaliaIFColors.accent,
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: avaliaIFColors.primary,
-                    borderWidth: '2px',
-                  },
-                },
-                '& .MuiInputLabel-root.Mui-focused': {
-                  color: avaliaIFColors.primary,
-                },
-              }}
+              sx={commonStyles.textField}
             />
 
             <TextField
@@ -359,21 +306,7 @@ export function Login() {
               defaultValue={formData.password}
               error={!!passwordError}
               helperText={passwordError}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2,
-                  '&:hover fieldset': {
-                    borderColor: avaliaIFColors.accent,
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: avaliaIFColors.primary,
-                    borderWidth: '2px',
-                  },
-                },
-                '& .MuiInputLabel-root.Mui-focused': {
-                  color: avaliaIFColors.primary,
-                },
-              }}
+              sx={commonStyles.textField}
             />
 
             <Button
@@ -381,27 +314,15 @@ export function Login() {
               fullWidth
               variant='contained'
               disabled={isLoading}
+              startIcon={
+                isLoading && (
+                  <CircularProgress size={20} sx={{ color: 'white' }} />
+                )
+              }
               sx={{
                 mt: 3,
                 mb: 2,
-                py: 1.5,
-                bgcolor: avaliaIFColors.primary,
-                color: avaliaIFColors.onPrimary,
-                borderRadius: 2,
-                textTransform: 'none',
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                boxShadow: `0 4px 16px rgba(27, 94, 32, 0.3)`,
-                '&:hover': {
-                  bgcolor: avaliaIFColors.primaryDark,
-                  boxShadow: `0 6px 20px rgba(27, 94, 32, 0.4)`,
-                  transform: 'translateY(-1px)',
-                },
-                '&:disabled': {
-                  bgcolor: avaliaIFColors.text.disabled,
-                  color: '#ffffff',
-                },
-                transition: 'all 0.2s ease-in-out',
+                ...commonStyles.primaryButton,
               }}
             >
               {isLoading ? 'Entrando...' : 'Entrar'}
@@ -417,17 +338,7 @@ export function Login() {
                 component='a'
                 href='#'
                 variant='body2'
-                color={avaliaIFColors.primary}
-                sx={{
-                  textDecoration: 'none',
-                  fontWeight: 500,
-                  cursor: 'pointer',
-                  '&:hover': {
-                    color: avaliaIFColors.primaryDark,
-                    textDecoration: 'underline',
-                  },
-                  transition: 'all 0.2s ease',
-                }}
+                sx={commonStyles.link}
                 onClick={(e) => {
                   e.preventDefault();
                   alert(
