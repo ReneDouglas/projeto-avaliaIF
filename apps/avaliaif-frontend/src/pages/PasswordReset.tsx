@@ -12,59 +12,105 @@ import {
   useTheme,
   useMediaQuery,
   CircularProgress,
+  IconButton,
+  InputAdornment,
 } from '@mui/material';
+import { Visibility, VisibilityOff, ArrowBack } from '@mui/icons-material';
 import { avaliaIFColors, commonStyles } from '../theme';
 
-interface LoginProps {
-  onForgotPassword?: () => void;
+interface PasswordResetProps {
+  onBackToLogin?: () => void;
 }
 
-export function Login({ onForgotPassword }: LoginProps) {
+export function PasswordReset({ onBackToLogin }: PasswordResetProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  // Refs para controlar os inputs diretamente
+  // Refs para controlar os inputs diretamente (seguindo padrão do Login)
   const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const newPasswordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-  // Estados do formulário - apenas para erros agora
-  const [formData] = useState({
-    email: '',
-    password: '',
-  });
+  // Estados do formulário - seguindo padrão do Login
   const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [newPasswordError, setNewPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [resetError, setResetError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  // Manipular submit do formulário - lê valores das refs
+  // Estados para mostrar/ocultar senhas
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Função de validação de senha forte
+  const validatePasswordStrength = (password: string): string => {
+    if (password.length < 8) {
+      return 'A senha deve ter pelo menos 8 caracteres';
+    }
+    if (!/(?=.*[a-z])/.test(password)) {
+      return 'A senha deve conter pelo menos uma letra minúscula';
+    }
+    if (!/(?=.*[A-Z])/.test(password)) {
+      return 'A senha deve conter pelo menos uma letra maiúscula';
+    }
+    if (!/(?=.*\d)/.test(password)) {
+      return 'A senha deve conter pelo menos um número';
+    }
+    if (!/(?=.*[@$!%*?&])/.test(password)) {
+      return 'A senha deve conter pelo menos um caractere especial (@$!%*?&)';
+    }
+    return '';
+  };
+
+  // Manipular submit do formulário - seguindo padrão do Login
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    // Pegar valores diretamente dos inputs
+    // Pegar valores diretamente dos inputs (padrão do Login)
     const email = emailRef.current?.value || '';
-    const password = passwordRef.current?.value || '';
+    const newPassword = newPasswordRef.current?.value || '';
+    const confirmPassword = confirmPasswordRef.current?.value || '';
 
-    // Validação simples
+    // Limpar erros anteriores
     setEmailError('');
-    setPasswordError('');
-    setLoginError('');
+    setNewPasswordError('');
+    setConfirmPasswordError('');
+    setResetError('');
+    setSuccessMessage('');
 
     let hasErrors = false;
 
+    // Validação do e-mail (mesmo padrão do Login)
     if (!email.trim()) {
       setEmailError('E-mail é obrigatório');
       hasErrors = true;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       setEmailError('E-mail inválido');
       hasErrors = true;
+    } else if (!email.includes('@ifpi.edu.br')) {
+      setEmailError('Deve ser um e-mail institucional do IFPI');
+      hasErrors = true;
     }
 
-    if (!password) {
-      setPasswordError('Senha é obrigatória');
+    // Validação da nova senha
+    if (!newPassword) {
+      setNewPasswordError('Nova senha é obrigatória');
       hasErrors = true;
-    } else if (password.length < 4) {
-      setPasswordError('Senha deve ter pelo menos 4 caracteres');
+    } else {
+      const passwordValidation = validatePasswordStrength(newPassword);
+      if (passwordValidation) {
+        setNewPasswordError(passwordValidation);
+        hasErrors = true;
+      }
+    }
+
+    // Validação da confirmação de senha
+    if (!confirmPassword) {
+      setConfirmPasswordError('Confirmação de senha é obrigatória');
+      hasErrors = true;
+    } else if (newPassword !== confirmPassword) {
+      setConfirmPasswordError('As senhas não coincidem');
       hasErrors = true;
     }
 
@@ -73,34 +119,38 @@ export function Login({ onForgotPassword }: LoginProps) {
     }
 
     setIsLoading(true);
-    setLoginError('');
+    setResetError('');
 
     try {
-      // Simular requisição de login
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Simular requisição de recuperação de senha (mesmo padrão do Login)
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // TODO: Integrar com API de autenticação real
+      // TODO: Integrar com API de recuperação de senha real
       // Por enquanto, simulando validação para desenvolvimento
       // NOTA: Esta lógica será substituída pela integração com o backend
 
       // Simulação temporária - remover quando a API estiver pronta
-      const isDevelopmentLogin =
-        email.includes('@ifpi.edu.br') && password.length >= 4;
+      const isValidReset = email.includes('@ifpi.edu.br');
 
-      if (isDevelopmentLogin) {
-        alert('Login realizado com sucesso!');
-        // TODO: Implementar redirecionamento para dashboard após integração com backend
+      if (isValidReset) {
+        setSuccessMessage(
+          'Senha alterada com sucesso! Você pode fazer login com sua nova senha.',
+        );
+        // Limpar campos após sucesso
+        if (emailRef.current) emailRef.current.value = '';
+        if (newPasswordRef.current) newPasswordRef.current.value = '';
+        if (confirmPasswordRef.current) confirmPasswordRef.current.value = '';
       } else {
-        setLoginError('E-mail ou senha incorretos');
+        setResetError('E-mail não encontrado no sistema');
       }
     } catch {
-      setLoginError('Erro interno. Tente novamente.');
+      setResetError('Erro interno. Tente novamente.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Seção institucional
+  // Seção institucional (reutilizada do Login)
   const InstitutionalSection = () => (
     <Box
       sx={{
@@ -223,7 +273,7 @@ export function Login({ onForgotPassword }: LoginProps) {
     </Box>
   );
 
-  // Seção do formulário
+  // Seção do formulário de recuperação
   const FormSection = () => (
     <Box
       sx={{
@@ -246,6 +296,21 @@ export function Login({ onForgotPassword }: LoginProps) {
         }}
       >
         <CardContent sx={{ p: 4 }}>
+          {/* Botão de voltar */}
+          <Box sx={{ mb: 2 }}>
+            <IconButton
+              onClick={onBackToLogin}
+              sx={{
+                color: avaliaIFColors.primary,
+                '&:hover': {
+                  bgcolor: `${avaliaIFColors.accent}20`,
+                },
+              }}
+            >
+              <ArrowBack />
+            </IconButton>
+          </Box>
+
           <Typography
             variant='h4'
             component='h2'
@@ -258,7 +323,7 @@ export function Login({ onForgotPassword }: LoginProps) {
               fontSize: { xs: '1.75rem', sm: '2rem' },
             }}
           >
-            Entrar
+            Recuperar Senha
           </Typography>
 
           <Typography
@@ -271,12 +336,18 @@ export function Login({ onForgotPassword }: LoginProps) {
               fontSize: '0.95rem',
             }}
           >
-            Acesse sua conta no AvaliaIF
+            Defina uma nova senha para sua conta
           </Typography>
 
-          {loginError && (
+          {resetError && (
             <Alert severity='error' sx={{ mb: 2 }}>
-              {loginError}
+              {resetError}
+            </Alert>
+          )}
+
+          {successMessage && (
+            <Alert severity='success' sx={{ mb: 2 }}>
+              {successMessage}
             </Alert>
           )}
 
@@ -290,7 +361,6 @@ export function Login({ onForgotPassword }: LoginProps) {
               label='E-mail institucional'
               name='email'
               autoComplete='email'
-              defaultValue={formData.email}
               error={!!emailError}
               helperText={emailError}
               placeholder='usuario@ifpi.edu.br'
@@ -298,26 +368,68 @@ export function Login({ onForgotPassword }: LoginProps) {
             />
 
             <TextField
-              inputRef={passwordRef}
+              inputRef={newPasswordRef}
               margin='normal'
               required
               fullWidth
-              name='password'
-              label='Senha'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-              defaultValue={formData.password}
-              error={!!passwordError}
-              helperText={passwordError}
+              name='newPassword'
+              label='Nova senha'
+              type={showNewPassword ? 'text' : 'password'}
+              id='newPassword'
+              autoComplete='new-password'
+              error={!!newPasswordError}
+              helperText={newPasswordError}
               sx={commonStyles.textField}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                      edge='end'
+                    >
+                      {showNewPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            <TextField
+              inputRef={confirmPasswordRef}
+              margin='normal'
+              required
+              fullWidth
+              name='confirmPassword'
+              label='Confirmar nova senha'
+              type={showConfirmPassword ? 'text' : 'password'}
+              id='confirmPassword'
+              autoComplete='new-password'
+              error={!!confirmPasswordError}
+              helperText={confirmPasswordError}
+              sx={commonStyles.textField}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      edge='end'
+                    >
+                      {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
 
             <Button
               type='submit'
               fullWidth
               variant='contained'
-              disabled={isLoading}
+              disabled={isLoading || !!successMessage}
               startIcon={
                 isLoading && (
                   <CircularProgress size={20} sx={{ color: 'white' }} />
@@ -329,15 +441,10 @@ export function Login({ onForgotPassword }: LoginProps) {
                 ...commonStyles.primaryButton,
               }}
             >
-              {isLoading ? 'Entrando...' : 'Entrar'}
+              {isLoading ? 'Alterando senha...' : 'Alterar senha'}
             </Button>
 
-            <Box
-              textAlign='center'
-              sx={{
-                mt: 2,
-              }}
-            >
+            <Box textAlign='center' sx={{ mt: 2 }}>
               <Typography
                 component='a'
                 href='#'
@@ -345,10 +452,10 @@ export function Login({ onForgotPassword }: LoginProps) {
                 sx={commonStyles.link}
                 onClick={(e) => {
                   e.preventDefault();
-                  onForgotPassword?.();
+                  onBackToLogin?.();
                 }}
               >
-                Esqueci minha senha
+                Voltar para o login
               </Typography>
             </Box>
           </Box>

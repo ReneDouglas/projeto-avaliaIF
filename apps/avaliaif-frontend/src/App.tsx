@@ -1,5 +1,5 @@
-import { Login } from './pages/Login';
+import { AuthContainer } from './pages';
 
 export function App() {
-  return <Login />;
+  return <AuthContainer />;
 }
