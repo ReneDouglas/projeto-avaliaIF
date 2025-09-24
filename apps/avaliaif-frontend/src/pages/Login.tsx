@@ -39,7 +39,7 @@ export function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  // Estados do formulário 
+  // Estados do formulário
   const [formData] = useState({
     email: '',
     password: '',
