@@ -1,5 +1,7 @@
 package br.edu.ifpi.avaliaifapi.servidor;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -31,15 +33,15 @@ public class Servidor {
     private String matricula;
     private String email_institucional;
     
-    @CreatedDate
-    private String criado_em;
-    private String criado_por;
+    
+    private LocalDateTime criadoEm;
+    private String criadoPor;
 
-    @LastModifiedDate
-    private String atualizado_em;
-    private String atualizado_por;
+    
+    private LocalDateTime atualizadoEm;
+    private String atualizadoPor;
 
-    Servidor() {
+    public Servidor() {
     }
 
     public Long getId() {
@@ -72,29 +74,29 @@ public class Servidor {
     public void setEmail_institucional(String email_institucional) {
         this.email_institucional = email_institucional;
     }
-    public String getCriado_em() {
-        return criado_em;
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
     }
-    public void setCriado_em(String criado_em) {
-        this.criado_em = criado_em;
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
     }
-    public String getCriado_por() {
-        return criado_por;
+    public String getCriadoPor() {
+        return criadoPor;
     }
-    public void setCriado_por(String criado_por) {
-        this.criado_por = criado_por;
+    public void setCriadoPor(String criadoPor) {
+        this.criadoPor = criadoPor;
     }
-    public String getAtualizado_em() {
-        return atualizado_em;
+    public LocalDateTime getAtualizadoEm() {
+        return atualizadoEm;
     }
-    public void setAtualizado_em(String atualizado_em) {
-        this.atualizado_em = atualizado_em;
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+        this.atualizadoEm = atualizadoEm;
     }
-    public String getAtualizado_por() {
-        return atualizado_por;
+    public String getAtualizadoPor() {
+        return atualizadoPor;
     }
-    public void setAtualizado_por(String atualizado_por) {
-        this.atualizado_por = atualizado_por;
+    public void setAtualizadoPor(String atualizadoPor) {
+        this.atualizadoPor = atualizadoPor;
     }
 
 }
