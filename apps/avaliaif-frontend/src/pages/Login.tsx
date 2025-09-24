@@ -13,7 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-// Cores oficiais do AvaliaIF
+// Cores
 const avaliaIFColors = {
   primary: '#1B5E20', // Verde principal do AvaliaIF
   primaryLight: '#4CAF50', // Verde claro
@@ -39,7 +39,7 @@ export function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  // Estados do formulário - apenas para erros agora
+  // Estados do formulário 
   const [formData] = useState({
     email: '',
     password: '',
@@ -180,7 +180,7 @@ export function Login() {
           src='/src/assets/brand/Logo-IFPI-Horizontal.png'
           alt='IFPI Logo'
           sx={{
-            width: isMobile ? 120 : 240,
+            width: isMobile ? 120 : 240, //MOBILE : PC
             height: 'auto',
             filter: 'drop-shadow(0 2px 8px rgba(27, 94, 32, 0.1))',
           }}
