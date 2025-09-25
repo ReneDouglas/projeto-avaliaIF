@@ -87,8 +87,10 @@
 		</dependency>
 		<!-- Flyway Migration -->
 		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
+    		<groupId>org.flywaydb</groupId>
+    		<artifactId>flyway-database-postgresql</artifactId>
+    		<version>11.12.0</version>
+    		<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
