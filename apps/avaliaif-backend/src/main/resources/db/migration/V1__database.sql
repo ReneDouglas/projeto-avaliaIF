@@ -1,0 +1,2 @@
+--Não altere este arquivo, ele é utilizado pelo Flyway para criar o banco de dados inicial
+--Se precisar alterar, crie uma nova migration
