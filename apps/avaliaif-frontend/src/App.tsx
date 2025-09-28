@@ -7,8 +7,8 @@ export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/avaliar-minutas" element={<AvaliarMinutas />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/avaliar-minutas' element={<AvaliarMinutas />} />
       </Routes>
     </BrowserRouter>
   );
