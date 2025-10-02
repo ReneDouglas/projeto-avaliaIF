@@ -15,7 +15,11 @@ import {
 } from '@mui/material';
 import { avaliaIFColors, commonStyles } from '../theme';
 
-export function Login() {
+interface LoginProps {
+  onForgotPassword?: () => void;
+}
+
+export function Login({ onForgotPassword }: LoginProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -341,9 +345,7 @@ export function Login() {
                 sx={commonStyles.link}
                 onClick={(e) => {
                   e.preventDefault();
-                  alert(
-                    'Funcionalidade de recuperação de senha será implementada em breve!',
-                  );
+                  onForgotPassword?.();
                 }}
               >
                 Esqueci minha senha
