@@ -1,4 +1,5 @@
 package br.edu.ifpi.avaliaifapi.avaliacao;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
