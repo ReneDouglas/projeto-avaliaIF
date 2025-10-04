@@ -1,7 +1,7 @@
 package br.edu.ifpi.avaliaifapi.disciplina;
 
-import br.edu.ifpi.shared.enums.Semestres;
-import br.edu.ifpi.shared.enums.TiposDisciplina;
+import br.edu.ifpi.avaliaifapi.shared.enums.Semestres;
+import br.edu.ifpi.avaliaifapi.shared.enums.TiposDisciplina;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -36,8 +36,7 @@ public class Disciplina {
   @Enumerated(EnumType.STRING)
   private TiposDisciplina tipo;
 
-  Disciplina() {
-  }
+  Disciplina() {}
 
   public Long getId() {
     return id;

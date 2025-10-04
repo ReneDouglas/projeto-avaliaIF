@@ -29,6 +29,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -92,6 +93,11 @@
     		<version>11.12.0</version>
     		<scope>runtime</scope>
 		</dependency>
+		<dependency>
+        	<groupId>org.mapstruct</groupId>
+        	<artifactId>mapstruct</artifactId>
+        	<version>${org.mapstruct.version}</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
@@ -112,9 +118,10 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<configLocation>google_checks.xml</configLocation>
+					<configLocation>checkstyle.xml</configLocation>
 					<!-- <encoding>UTF-8</encoding> -->
 					<consoleOutput>true</consoleOutput>
+					<failOnViolation>true</failOnViolation>
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
 					<outputFile>${project.build.directory}/checkstyle/checkstyle-report.xml</outputFile>
@@ -130,6 +137,23 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>21</source> <!-- depending on your project -->
+                <target>21</target> <!-- depending on your project -->
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>${org.mapstruct.version}</version>
+                    </path>
+                    <!-- other annotation processors -->
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 

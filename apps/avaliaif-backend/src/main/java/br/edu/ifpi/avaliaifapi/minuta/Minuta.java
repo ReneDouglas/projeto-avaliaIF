@@ -1,9 +1,9 @@
 package br.edu.ifpi.avaliaifapi.minuta;
 
-import br.edu.ifpi.shared.enums.Eixos;
-import br.edu.ifpi.shared.enums.Semestres;
-import br.edu.ifpi.shared.enums.StatusMinuta;
-import br.edu.ifpi.shared.enums.TiposDisciplina;
+import br.edu.ifpi.avaliaifapi.shared.enums.Eixos;
+import br.edu.ifpi.avaliaifapi.shared.enums.Semestres;
+import br.edu.ifpi.avaliaifapi.shared.enums.StatusMinuta;
+import br.edu.ifpi.avaliaifapi.shared.enums.TiposDisciplina;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -54,8 +54,7 @@ public class Minuta {
    * Construtor padrão da classe Minuta.
    */
 
-  public Minuta() {
-  }
+  public Minuta() {}
 
   public Long getId() {
     return id;

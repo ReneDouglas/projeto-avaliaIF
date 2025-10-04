@@ -1,4 +1,4 @@
-package br.edu.ifpi.shared.enums;
+package br.edu.ifpi.avaliaifapi.shared.enums;
 
 /**
  * Enumeração que representa as funções do servidor.
@@ -7,9 +7,5 @@ package br.edu.ifpi.shared.enums;
  * @author luisthedevmagician
  */
 public enum FuncoesServidor {
-  ADMINISTRADOR,
-  PROFESSOR,
-  COORDENADOR,
-  SETOR_PEDAGOGICO,
-  SETOR_LOGISTICA
+  ADMINISTRADOR, PROFESSOR, COORDENADOR, SETOR_PEDAGOGICO, SETOR_LOGISTICA
 }

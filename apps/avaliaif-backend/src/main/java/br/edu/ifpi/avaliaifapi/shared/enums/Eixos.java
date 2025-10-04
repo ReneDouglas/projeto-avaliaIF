@@ -1,4 +1,4 @@
-package br.edu.ifpi.shared.enums;
+package br.edu.ifpi.avaliaifapi.shared.enums;
 
 /**
  * Enumeração que representa os possíveis status de uma minuta.
@@ -7,8 +7,5 @@ package br.edu.ifpi.shared.enums;
  */
 
 public enum Eixos {
-  ADMINISTRACAO,
-  AGROPECUARIA,
-  INFORMATICA,
-  MEIO_AMBIENTE
+  ADMINISTRACAO, AGROPECUARIA, INFORMATICA, MEIO_AMBIENTE
 }
