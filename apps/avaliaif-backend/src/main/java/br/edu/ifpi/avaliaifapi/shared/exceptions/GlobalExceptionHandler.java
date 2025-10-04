@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * controllers.
  */
 @RestControllerAdvice
-public class GlobalHandlerException {
+public class GlobalExceptionHandler {
 
 }
