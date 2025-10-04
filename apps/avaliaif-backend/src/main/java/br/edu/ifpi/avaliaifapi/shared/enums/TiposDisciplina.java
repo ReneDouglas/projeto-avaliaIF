@@ -1,4 +1,4 @@
-package br.edu.ifpi.shared.enums;
+package br.edu.ifpi.avaliaifapi.shared.enums;
 
 /**
  * Enumeração que representa os tipos de disciplina.
@@ -6,6 +6,5 @@ package br.edu.ifpi.shared.enums;
  * @author Renê Morais
  */
 public enum TiposDisciplina {
-  TECNICA,
-  PROPEDEUTICA,
+  TECNICA, PROPEDEUTICA,
 }

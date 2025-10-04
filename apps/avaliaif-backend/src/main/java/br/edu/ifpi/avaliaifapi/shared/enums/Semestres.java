@@ -1,4 +1,4 @@
-package br.edu.ifpi.shared.enums;
+package br.edu.ifpi.avaliaifapi.shared.enums;
 
 /**
  * Enumeração que representa os semestres acadêmicos.
@@ -6,6 +6,5 @@ package br.edu.ifpi.shared.enums;
  * @author Renê Morais
  */
 public enum Semestres {
-  PRIMEIRO,
-  SEGUNDO,
+  PRIMEIRO, SEGUNDO,
 }

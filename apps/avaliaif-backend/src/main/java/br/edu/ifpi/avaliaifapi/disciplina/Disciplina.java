@@ -1,7 +1,8 @@
 package br.edu.ifpi.avaliaifapi.disciplina;
 
-import br.edu.ifpi.shared.enums.Semestres;
-import br.edu.ifpi.shared.enums.TiposDisciplina;
+import br.edu.ifpi.avaliaifapi.disciplina.dtos.DisciplinaDTO;
+import br.edu.ifpi.avaliaifapi.shared.enums.Semestres;
+import br.edu.ifpi.avaliaifapi.shared.enums.TiposDisciplina;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,8 +44,7 @@ public class Disciplina {
   private LocalDateTime atualizadoEm;
   private String atualizadoPor;
 
-  Disciplina() {
-  }
+  Disciplina() {}
 
   public Long getId() {
     return id;
