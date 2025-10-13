@@ -27,17 +27,16 @@ public class Servidor {
 
   private String nome;
   private String matricula;
-  private String email_institucional;
-
+  private String emailInstitucional;
 
   private LocalDateTime criadoEm;
   private String criadoPor;
 
-
   private LocalDateTime atualizadoEm;
   private String atualizadoPor;
 
-  public Servidor() {}
+  public Servidor() {
+  }
 
   public Long getId() {
     return id;
@@ -71,12 +70,12 @@ public class Servidor {
     this.matricula = matricula;
   }
 
-  public String getEmail_institucional() {
-    return email_institucional;
+  public String getEmailInstitucional() {
+    return emailInstitucional;
   }
 
-  public void setEmail_institucional(String email_institucional) {
-    this.email_institucional = email_institucional;
+  public void setEmailInstitucional(String emailInstitucional) {
+    this.emailInstitucional = emailInstitucional;
   }
 
   public LocalDateTime getCriadoEm() {
