@@ -6,6 +6,7 @@ WORKDIR /app
 # Copiar os arquivos do projeto
 COPY pom.xml .
 COPY src ./src
+COPY checkstyle.xml .
 
 # --mount=type=cache,target=/root/.m2 diz ao Docker para usar um cache persistente
 # para as dependências do Maven, tornando builds futuros muito mais rápidos.

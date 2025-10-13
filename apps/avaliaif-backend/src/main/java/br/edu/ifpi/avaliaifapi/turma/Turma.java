@@ -1,6 +1,6 @@
 package br.edu.ifpi.avaliaifapi.turma;
 
-import br.edu.ifpi.shared.enums.Semestres;
+import br.edu.ifpi.avaliaifapi.shared.enums.Semestres;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,46 +19,46 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "turmas")
 public class Turma {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(unique = true)
-    private String publicId;
+  @Column(unique = true)
+  private String publicId;
 
-    private String nome;
+  private String nome;
 
-    @Enumerated(EnumType.STRING)
-    private Semestres semestre;
+  @Enumerated(EnumType.STRING)
+  private Semestres semestre;
 
-    public Turma() {
-    }
+  public Turma() {
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getPublicId() {
-        return publicId;
-    }
+  public String getPublicId() {
+    return publicId;
+  }
 
-    public void setPublicId(String publicId) {
-        this.publicId = publicId;
-    }
+  public void setPublicId(String publicId) {
+    this.publicId = publicId;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public Semestres getSemestre() {
-        return semestre;
-    }
+  public Semestres getSemestre() {
+    return semestre;
+  }
 
-    public void setSemestre(Semestres semestre) {
-        this.semestre = semestre;
-    }
+  public void setSemestre(Semestres semestre) {
+    this.semestre = semestre;
+  }
 }
